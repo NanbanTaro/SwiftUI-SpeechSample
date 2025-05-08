@@ -29,21 +29,11 @@ struct ContentView: View {
                     }
                 }
             } label: {
-                Circle()
-                    .stroke(.white, lineWidth: 4)
+                Image(systemName: !liveTranscriber.isRecording ? "record.circle" : "stop.circle.fill")
+                    .resizable()
                     .frame(width: 60, height: 60)
-                    .overlay {
-                        if liveTranscriber.isRecording {
-                            Rectangle()
-                                .frame(width: 32, height: 32)
-                                .foregroundStyle(.red)
-                        } else {
-                            Circle()
-                                .frame(width: 40, height: 40)
-                                .foregroundStyle(.red)
-                        }
-                    }
-
+                    .foregroundStyle(Color.red)
+                    .padding()
             }
         }
         .onAppear() {
